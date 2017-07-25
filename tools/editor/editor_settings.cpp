@@ -497,7 +497,7 @@ void EditorSettings::_load_defaults(Ref<ConfigFile> p_extra_config) {
 
 	set("gridmap_editor/pick_distance", 5000.0);
 
-	set("3d_editor/grid_color",Color(1,1,1,0.2));
+	set("3d_editor/grid_color",Color(1,1,1,0.1));
  	//hints["3d_editor/grid_color"]=PropertyInfo(Variant::COLOR,"3d_editor/grid_color", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_DEFAULT|PROPERTY_USAGE_RESTART_IF_CHANGED);
  	hints["3d_editor/grid_color"]=PropertyInfo(Variant::COLOR,"3d_editor/grid_color", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_DEFAULT);
 

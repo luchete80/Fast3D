@@ -3242,8 +3242,8 @@ void SpatialEditor::_init_indicators() {
 			Vector3 axis_n2;
 			axis_n2[(i+2)%3]=1;
 
-			origin_colors.push_back(Color(axis.x,axis.y,axis.z));
-			origin_colors.push_back(Color(axis.x,axis.y,axis.z));
+			origin_colors.push_back(Color(axis.x,axis.z,axis.y,0.4));
+			origin_colors.push_back(Color(axis.x,axis.z,axis.y,0.4));
 			origin_points.push_back(axis*4096);
 			origin_points.push_back(axis*-4096);
 #define ORIGIN_GRID_SIZE 25
