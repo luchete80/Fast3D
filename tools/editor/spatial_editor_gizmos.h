@@ -34,20 +34,20 @@
 #include "scene/3d/light.h"
 #include "scene/3d/camera.h"
 #include "scene/3d/position_3d.h"
-#include "scene/3d/spatial_sample_player.h"
-#include "scene/3d/spatial_stream_player.h"
+//#include "scene/3d/spatial_sample_player.h"
+//#include "scene/3d/spatial_stream_player.h"
 #include "scene/3d/test_cube.h"
 #include "scene/3d/mesh_instance.h"
-#include "scene/3d/body_shape.h"
+//#include "scene/3d/body_shape.h"
 #include "scene/3d/room_instance.h"
 #include "scene/3d/visibility_notifier.h"
 #include "scene/3d/portal.h"
-#include "scene/3d/ray_cast.h"
-#include "scene/3d/navigation_mesh.h"
+//#include "scene/3d/ray_cast.h"
+//#include "scene/3d/navigation_mesh.h"
 
-#include "scene/3d/vehicle_body.h"
-#include "scene/3d/collision_polygon.h"
-#include "scene/3d/physics_joint.h"
+//#include "scene/3d/vehicle_body.h"
+//#include "scene/3d/collision_polygon.h"
+//#include "scene/3d/physics_joint.h"
 
 
 class Camera;
@@ -60,7 +60,7 @@ class SpatialGizmoTool  : public SpatialEditorGizmo {
 
 		RID instance;
 		Ref<Mesh> mesh;
-		RID skeleton;
+		//RID skeleton;
 		bool billboard;
 		bool unscaled;
 		bool can_intersect;
@@ -187,34 +187,34 @@ public:
 
 };
 
-class SkeletonSpatialGizmo  : public SpatialGizmoTool {
+// class SkeletonSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(SkeletonSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(SkeletonSpatialGizmo,SpatialGizmoTool);
 
-	Skeleton* skel;
+	// //Skeleton* skel;
 
-public:
+// public:
 
-	void redraw();
-	SkeletonSpatialGizmo(Skeleton* p_skel=NULL);
+	// void redraw();
+	// SkeletonSpatialGizmo(Skeleton* p_skel=NULL);
 
-};
-
-
+// };
 
 
-class SpatialPlayerSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(SpatialPlayerSpatialGizmo,SpatialGizmoTool);
 
-	SpatialPlayer* splayer;
+// class SpatialPlayerSpatialGizmo  : public SpatialGizmoTool {
 
-public:
+	// OBJ_TYPE(SpatialPlayerSpatialGizmo,SpatialGizmoTool);
 
-	void redraw();
-	SpatialPlayerSpatialGizmo(SpatialPlayer* p_splayer=NULL);
+	// SpatialPlayer* splayer;
 
-};
+// public:
+
+	// void redraw();
+	// SpatialPlayerSpatialGizmo(SpatialPlayer* p_splayer=NULL);
+
+// };
 
 
 
@@ -231,29 +231,29 @@ public:
 };
 
 
-class RoomSpatialGizmo  : public SpatialGizmoTool {
+// class RoomSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(RoomSpatialGizmo,SpatialGizmoTool);
-
-
-	struct _EdgeKey {
-
-		Vector3 from;
-		Vector3 to;
-
-		bool operator<(const _EdgeKey& p_with) const { return from==p_with.from ? to < p_with.to : from < p_with.from; }
-	};
+	// OBJ_TYPE(RoomSpatialGizmo,SpatialGizmoTool);
 
 
+	// struct _EdgeKey {
 
-	Room* room;
+		// Vector3 from;
+		// Vector3 to;
 
-public:
+		// bool operator<(const _EdgeKey& p_with) const { return from==p_with.from ? to < p_with.to : from < p_with.from; }
+	// };
 
-	void redraw();
-	RoomSpatialGizmo(Room* p_room=NULL);
 
-};
+
+	// Room* room;
+
+// public:
+
+	// void redraw();
+	// RoomSpatialGizmo(Room* p_room=NULL);
+
+// };
 
 
 class PortalSpatialGizmo  : public SpatialGizmoTool {
@@ -291,157 +291,157 @@ public:
 
 
 
-class CollisionShapeSpatialGizmo  : public SpatialGizmoTool {
+// class CollisionShapeSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(CollisionShapeSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(CollisionShapeSpatialGizmo,SpatialGizmoTool);
 
-	CollisionShape* cs;
+	// //CollisionShape* cs;
 
-public:
-	virtual String get_handle_name(int p_idx) const;
-	virtual Variant get_handle_value(int p_idx) const;
-	virtual void set_handle(int p_idx,Camera *p_camera, const Point2& p_point);
-	virtual void commit_handle(int p_idx,const Variant& p_restore,bool p_cancel=false);
-	void redraw();
-	CollisionShapeSpatialGizmo(CollisionShape* p_cs=NULL);
+// public:
+	// virtual String get_handle_name(int p_idx) const;
+	// virtual Variant get_handle_value(int p_idx) const;
+	// virtual void set_handle(int p_idx,Camera *p_camera, const Point2& p_point);
+	// virtual void commit_handle(int p_idx,const Variant& p_restore,bool p_cancel=false);
+	// void redraw();
+	// CollisionShapeSpatialGizmo(CollisionShape* p_cs=NULL);
 
-};
+// };
 
 
-class CollisionPolygonSpatialGizmo  : public SpatialGizmoTool {
+// class CollisionPolygonSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(CollisionPolygonSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(CollisionPolygonSpatialGizmo,SpatialGizmoTool);
 
-	CollisionPolygon* polygon;
+	// CollisionPolygon* polygon;
 
-public:
+// public:
 
-	void redraw();
-	CollisionPolygonSpatialGizmo(CollisionPolygon* p_polygon=NULL);
+	// void redraw();
+	// CollisionPolygonSpatialGizmo(CollisionPolygon* p_polygon=NULL);
 
-};
+// };
 
 
-class RayCastSpatialGizmo  : public SpatialGizmoTool {
+// class RayCastSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(RayCastSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(RayCastSpatialGizmo,SpatialGizmoTool);
 
-	RayCast* raycast;
+	// RayCast* raycast;
 
-public:
+// public:
 
-	void redraw();
-	RayCastSpatialGizmo(RayCast* p_raycast=NULL);
+	// void redraw();
+	// RayCastSpatialGizmo(RayCast* p_raycast=NULL);
 
-};
+// };
 
 
 
-class VehicleWheelSpatialGizmo  : public SpatialGizmoTool {
+// class VehicleWheelSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(VehicleWheelSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(VehicleWheelSpatialGizmo,SpatialGizmoTool);
 
-	VehicleWheel* car_wheel;
+	// VehicleWheel* car_wheel;
 
-public:
+// public:
 
-	void redraw();
-	VehicleWheelSpatialGizmo(VehicleWheel* p_car_wheel=NULL);
+	// void redraw();
+	// VehicleWheelSpatialGizmo(VehicleWheel* p_car_wheel=NULL);
 
-};
+// };
 
 
-class NavigationMeshSpatialGizmo  : public SpatialGizmoTool {
+// class NavigationMeshSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(NavigationMeshSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(NavigationMeshSpatialGizmo,SpatialGizmoTool);
 
 
-	struct _EdgeKey {
+	// struct _EdgeKey {
 
-		Vector3 from;
-		Vector3 to;
+		// Vector3 from;
+		// Vector3 to;
 
-		bool operator<(const _EdgeKey& p_with) const { return from==p_with.from ? to < p_with.to : from < p_with.from; }
-	};
+		// bool operator<(const _EdgeKey& p_with) const { return from==p_with.from ? to < p_with.to : from < p_with.from; }
+	// };
 
 
 
-	NavigationMeshInstance* navmesh;
+	// NavigationMeshInstance* navmesh;
 
-public:
+// public:
 
-	void redraw();
-	NavigationMeshSpatialGizmo(NavigationMeshInstance* p_navmesh=NULL);
+	// void redraw();
+	// NavigationMeshSpatialGizmo(NavigationMeshInstance* p_navmesh=NULL);
 
-};
+// };
 
 
-class PinJointSpatialGizmo  : public SpatialGizmoTool {
+// class PinJointSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(PinJointSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(PinJointSpatialGizmo,SpatialGizmoTool);
 
-	PinJoint* p3d;
+	// PinJoint* p3d;
 
-public:
+// public:
 
-	void redraw();
-	PinJointSpatialGizmo(PinJoint* p_p3d=NULL);
+	// void redraw();
+	// PinJointSpatialGizmo(PinJoint* p_p3d=NULL);
 
-};
+// };
 
 
-class HingeJointSpatialGizmo  : public SpatialGizmoTool {
+// class HingeJointSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(HingeJointSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(HingeJointSpatialGizmo,SpatialGizmoTool);
 
-	HingeJoint* p3d;
+	// HingeJoint* p3d;
 
-public:
+// public:
 
-	void redraw();
-	HingeJointSpatialGizmo(HingeJoint* p_p3d=NULL);
+	// void redraw();
+	// HingeJointSpatialGizmo(HingeJoint* p_p3d=NULL);
 
-};
+// };
 
-class SliderJointSpatialGizmo  : public SpatialGizmoTool {
+// class SliderJointSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(SliderJointSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(SliderJointSpatialGizmo,SpatialGizmoTool);
 
-	SliderJoint* p3d;
+	// SliderJoint* p3d;
 
-public:
+// public:
 
-	void redraw();
-	SliderJointSpatialGizmo(SliderJoint* p_p3d=NULL);
+	// void redraw();
+	// SliderJointSpatialGizmo(SliderJoint* p_p3d=NULL);
 
-};
+// };
 
-class ConeTwistJointSpatialGizmo  : public SpatialGizmoTool {
+// class ConeTwistJointSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(ConeTwistJointSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(ConeTwistJointSpatialGizmo,SpatialGizmoTool);
 
-	ConeTwistJoint* p3d;
+	// ConeTwistJoint* p3d;
 
-public:
+// public:
 
-	void redraw();
-	ConeTwistJointSpatialGizmo(ConeTwistJoint* p_p3d=NULL);
+	// void redraw();
+	// ConeTwistJointSpatialGizmo(ConeTwistJoint* p_p3d=NULL);
 
-};
+// };
 
 
-class Generic6DOFJointSpatialGizmo  : public SpatialGizmoTool {
+// class Generic6DOFJointSpatialGizmo  : public SpatialGizmoTool {
 
-	OBJ_TYPE(Generic6DOFJointSpatialGizmo,SpatialGizmoTool);
+	// OBJ_TYPE(Generic6DOFJointSpatialGizmo,SpatialGizmoTool);
 
-	Generic6DOFJoint* p3d;
+	// Generic6DOFJoint* p3d;
 
-public:
+// public:
 
-	void redraw();
-	Generic6DOFJointSpatialGizmo(Generic6DOFJoint* p_p3d=NULL);
+	// void redraw();
+	// Generic6DOFJointSpatialGizmo(Generic6DOFJoint* p_p3d=NULL);
 
-};
+// };
 
 
 class SpatialEditorGizmos  {
@@ -455,7 +455,7 @@ public:
 	Ref<FixedMaterial> light_material_omni_icon;
 	Ref<FixedMaterial> light_material_directional_icon;
 	Ref<FixedMaterial> camera_material;
-	Ref<FixedMaterial> skeleton_material;
+	//Ref<FixedMaterial> skeleton_material;
 	Ref<FixedMaterial> room_material;
 	Ref<FixedMaterial> portal_material;
 	Ref<FixedMaterial> raycast_material;

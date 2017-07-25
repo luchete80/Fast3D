@@ -1,7 +1,7 @@
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/tools/editor /d/Luciano/Libs/GodotGUI/tools/editor > /d/Luciano/editor.diff
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/main /d/Luciano/Libs/GodotGUI/main >  /d/Luciano/main.diff
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/scene/ /d/Luciano/Libs/GodotGUI/scene >  /d/Luciano/scene.diff
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/servers/ /d/Luciano/Libs/GodotGUI/servers >  /d/Luciano/servers.diff
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/drivers/gles2 /d/Luciano/Libs/GodotGUI/drivers/gles2 >  /d/Luciano/gles2.diff
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/platform/windows /d/Luciano/Libs/GodotGUI/platform/windows  >  /d/Luciano/windows.diff
-diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/core /d/Luciano/Libs/GodotGUI/core  >  /d/Luciano/core.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/tools/editor /d/Luciano/Programas-Src/Fast3D/tools/editor > /d/Luciano/editor.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/main /d/Luciano/Programas-Src/Fast3D/main >  /d/Luciano/main.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/scene/ /d/Luciano/Programas-Src/Fast3D/scene >  /d/Luciano/scene.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/servers/ /d/Luciano/Programas-Src/Fast3D/servers >  /d/Luciano/servers.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/drivers/gles2 /d/Luciano/Programas-Src/Fast3D/drivers/gles2 >  /d/Luciano/gles2.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/platform/windows /d/Luciano/Programas-Src/Fast3D/platform/windows  >  /d/Luciano/windows.diff
+diff -bur /d/Luciano/Programas-Src/godot-src-2.0-stable/core /d/Luciano/Programas-Src/Fast3D/core  >  /d/Luciano/core.diff

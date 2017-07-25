@@ -37,7 +37,7 @@
 #include "tools/editor/editor_node.h"
 #include "tools/editor/editor_settings.h"
 #include "scene/resources/surface_tool.h"
-//#include "tools/editor/spatial_editor_gizmos.h"
+#include "tools/editor/spatial_editor_gizmos.h"
 #include "globals.h"
 //#include "tools/editor/plugins/animation_player_editor_plugin.h"
 //#include "tools/editor/animation_editor.h"
@@ -3665,30 +3665,30 @@ void SpatialEditor::_request_gizmo(Object* p_obj) {
 		return;
 	if (editor->get_edited_scene() && (sp==editor->get_edited_scene() || sp->get_owner()==editor->get_edited_scene())) {
 
-		// Ref<SpatialEditorGizmo> seg = gizmos->get_gizmo(sp);
+		Ref<SpatialEditorGizmo> seg = gizmos->get_gizmo(sp);
 
-		// if (seg.is_valid()) {
-			// sp->set_gizmo(seg);
-		// }
+		if (seg.is_valid()) {
+			sp->set_gizmo(seg);
+		}
 
-		// for (List<EditorPlugin*>::Element *E=gizmo_plugins.front();E;E=E->next()) {
+		for (List<EditorPlugin*>::Element *E=gizmo_plugins.front();E;E=E->next()) {
 
-			// if (E->get()->create_spatial_gizmo(sp)) {
+			if (E->get()->create_spatial_gizmo(sp)) {
 
-				// seg = sp->get_gizmo();
-				// if (sp==selected && seg.is_valid()) {
+				seg = sp->get_gizmo();
+				if (sp==selected && seg.is_valid()) {
 
-					// seg->set_selected(true);
-					// selected->update_gizmo();
-				// }
-				// return;
-			// }
-		// }
+					seg->set_selected(true);
+					selected->update_gizmo();
+				}
+				return;
+			}
+		}
 
-		// if (seg.is_valid() && sp==selected) {
-			// seg->set_selected(true);
-			// selected->update_gizmo();
-		// }
+		if (seg.is_valid() && sp==selected) {
+			seg->set_selected(true);
+			selected->update_gizmo();
+		}
 
 	}
 
@@ -3756,7 +3756,7 @@ void SpatialEditor::_bind_methods() {
 	ObjectTypeDB::bind_method("_xform_dialog_action",&SpatialEditor::_xform_dialog_action);
 	ObjectTypeDB::bind_method("_instance_scene",&SpatialEditor::_instance_scene);
 	ObjectTypeDB::bind_method("_get_editor_data",&SpatialEditor::_get_editor_data);
-	//ObjectTypeDB::bind_method("_request_gizmo",&SpatialEditor::_request_gizmo);
+	ObjectTypeDB::bind_method("_request_gizmo",&SpatialEditor::_request_gizmo);
 	ObjectTypeDB::bind_method("_default_light_angle_input",&SpatialEditor::_default_light_angle_input);
 	ObjectTypeDB::bind_method("_update_ambient_light_color",&SpatialEditor::_update_ambient_light_color);
 	ObjectTypeDB::bind_method("_toggle_maximize_view",&SpatialEditor::_toggle_maximize_view);
