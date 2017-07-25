@@ -33,6 +33,7 @@
 #include "message_queue.h"
 #include "scene/main/viewport.h"
 #include "tools/editor/plugins/canvas_item_editor_plugin.h"
+#include "scene/3d/spatial.h" //LUCIANO
 
 #include "scene/resources/packed_scene.h"
 
@@ -166,18 +167,18 @@ void SceneTreeEditor::_cell_button_pressed(Object *p_item,int p_column,int p_id)
 		//LUCIANO: remember to uncomment this.
 		if (n->is_type("Spatial")) {
 
-			// Spatial *ci = n->cast_to<Spatial>();
-			// if (!ci->is_visible() && ci->get_parent_spatial() && !ci->get_parent_spatial()->is_visible()) {
-				// error->set_text("This item cannot be made visible because the parent is hidden. Unhide the parent first.");
-				// error->popup_centered_minsize();
-				// return;
-			// }
+			Spatial *ci = n->cast_to<Spatial>();
+			if (!ci->is_visible() && ci->get_parent_spatial() && !ci->get_parent_spatial()->is_visible()) {
+				error->set_text("This item cannot be made visible because the parent is hidden. Unhide the parent first.");
+				error->popup_centered_minsize();
+				return;
+			}
 
-			// bool v = !bool(n->call("is_hidden"));
-			// undo_redo->create_action("Toggle Spatial Visible");
-			// undo_redo->add_do_method(n,"_set_visible_",!v);
-			// undo_redo->add_undo_method(n,"_set_visible_",v);
-			// undo_redo->commit_action();
+			bool v = !bool(n->call("is_hidden"));
+			undo_redo->create_action("Toggle Spatial Visible");
+			undo_redo->add_do_method(n,"_set_visible_",!v);
+			undo_redo->add_undo_method(n,"_set_visible_",v);
+			undo_redo->commit_action();
 		} else if (n->is_type("CanvasItem")) {
 
 			CanvasItem *ci = n->cast_to<CanvasItem>();
