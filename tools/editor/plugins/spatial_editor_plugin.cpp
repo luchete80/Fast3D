@@ -3660,37 +3660,37 @@ HSplitContainer *SpatialEditor::get_palette_split() {
 
 void SpatialEditor::_request_gizmo(Object* p_obj) {
 
-	Spatial *sp=p_obj->cast_to<Spatial>();
-	if (!sp)
-		return;
-	if (editor->get_edited_scene() && (sp==editor->get_edited_scene() || sp->get_owner()==editor->get_edited_scene())) {
+	// Spatial *sp=p_obj->cast_to<Spatial>();
+	// if (!sp)
+		// return;
+	// if (editor->get_edited_scene() && (sp==editor->get_edited_scene() || sp->get_owner()==editor->get_edited_scene())) {
 
-		Ref<SpatialEditorGizmo> seg = gizmos->get_gizmo(sp);
+		// Ref<SpatialEditorGizmo> seg = gizmos->get_gizmo(sp);
 
-		if (seg.is_valid()) {
-			sp->set_gizmo(seg);
-		}
+		// if (seg.is_valid()) {
+			// sp->set_gizmo(seg);
+		// }
 
-		for (List<EditorPlugin*>::Element *E=gizmo_plugins.front();E;E=E->next()) {
+		// for (List<EditorPlugin*>::Element *E=gizmo_plugins.front();E;E=E->next()) {
 
-			if (E->get()->create_spatial_gizmo(sp)) {
+			// if (E->get()->create_spatial_gizmo(sp)) {
 
-				seg = sp->get_gizmo();
-				if (sp==selected && seg.is_valid()) {
+				// seg = sp->get_gizmo();
+				// if (sp==selected && seg.is_valid()) {
 
-					seg->set_selected(true);
-					selected->update_gizmo();
-				}
-				return;
-			}
-		}
+					// seg->set_selected(true);
+					// selected->update_gizmo();
+				// }
+				// return;
+			// }
+		// }
 
-		if (seg.is_valid() && sp==selected) {
-			seg->set_selected(true);
-			selected->update_gizmo();
-		}
+		// if (seg.is_valid() && sp==selected) {
+			// seg->set_selected(true);
+			// selected->update_gizmo();
+		// }
 
-	}
+	// }
 
 }
 
