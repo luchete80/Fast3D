@@ -1,1 +1,0 @@
- -LD:/Luciano/Programas-Src/Fast3D/ libscene.dll.a libservers.dll.a libgl_context.dll.a -lopengl32 libpng.dll.a libcore.dll.a libzlib.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
