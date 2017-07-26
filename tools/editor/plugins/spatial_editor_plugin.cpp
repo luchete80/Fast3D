@@ -1265,7 +1265,7 @@ void SpatialEditorViewport::_sinput(const InputEvent &p_event) {
 			} else if (m.button_mask&1) {
 
 				if (nav_scheme == NAVIGATION_MAYA && m.mod.alt) {
-					nav_mode = NAVIGATION_ORBIT;				
+					nav_mode = NAVIGATION_ORBIT;
 				} else if (nav_scheme == NAVIGATION_MODO && m.mod.alt && m.mod.shift) {
 					nav_mode = NAVIGATION_PAN;
 				} else if (nav_scheme == NAVIGATION_MODO && m.mod.alt && m.mod.control) {
@@ -2606,15 +2606,15 @@ void SpatialEditor::_generate_selection_box() {
 	aabb.grow_by( aabb.get_longest_axis_size()/20.0 );
 
 	Ref<SurfaceTool> st = memnew( SurfaceTool );
-	
+
 	st->begin(Mesh::PRIMITIVE_LINES);
 	for (int i=0;i<12;i++) {
-	
+
 		Vector3 a,b;
-		aabb.get_edge(i,a,b); 
-		
+		aabb.get_edge(i,a,b);
+
 		/*Vector<Vector3> points;
-		Vector<Color> colors;		
+		Vector<Color> colors;
 		points.push_back(a);
 		points.push_back(b);*/
 
@@ -2804,7 +2804,7 @@ void SpatialEditor::set_state(const Dictionary& p_state) {
 
 
 void SpatialEditor::edit(Spatial *p_spatial) {
-	
+
 	if (p_spatial!=selected) {
 		if (selected) {
 
@@ -2836,8 +2836,8 @@ void SpatialEditor::edit(Spatial *p_spatial) {
 
 		// should become the selection
 	}
-	
-	
+
+
 }
 
 void SpatialEditor::_xform_dialog_action() {
@@ -3231,7 +3231,7 @@ void SpatialEditor::_init_indicators() {
 		DVector<Vector3> grid_points[3];
 		Vector<Color> origin_colors;
 		Vector<Vector3> origin_points;
-		
+
 		Color grid_color = EditorSettings::get_singleton()->get("3d_editor/grid_color"); //LUCIANO
 
 		for(int i=0;i<3;i++) {
@@ -3255,12 +3255,12 @@ void SpatialEditor::_init_indicators() {
 				// grid_colors[i].push_back(Color(axis.x,axis.y,axis.z,0.2));
 				// grid_colors[i].push_back(Color(axis.x,axis.y,axis.z,0.2));
 				// grid_colors[i].push_back(Color(axis.x,axis.y,axis.z,0.2));
-				
+
 				grid_colors[i].push_back(grid_color);
  				grid_colors[i].push_back(grid_color);
  				grid_colors[i].push_back(grid_color);
  				grid_colors[i].push_back(grid_color);
- 
+
 				grid_points[i].push_back(axis_n1*ORIGIN_GRID_SIZE+axis_n2*j);
 				grid_points[i].push_back(-axis_n1*ORIGIN_GRID_SIZE+axis_n2*j);
 				grid_points[i].push_back(axis_n2*ORIGIN_GRID_SIZE+axis_n1*j);
@@ -3660,37 +3660,37 @@ HSplitContainer *SpatialEditor::get_palette_split() {
 
 void SpatialEditor::_request_gizmo(Object* p_obj) {
 
-	// Spatial *sp=p_obj->cast_to<Spatial>();
-	// if (!sp)
-		// return;
-	// if (editor->get_edited_scene() && (sp==editor->get_edited_scene() || sp->get_owner()==editor->get_edited_scene())) {
+	 Spatial *sp=p_obj->cast_to<Spatial>();
+	 if (!sp)
+		 return;
+	 if (editor->get_edited_scene() && (sp==editor->get_edited_scene() || sp->get_owner()==editor->get_edited_scene())) {
 
-		// Ref<SpatialEditorGizmo> seg = gizmos->get_gizmo(sp);
+		 Ref<SpatialEditorGizmo> seg = gizmos->get_gizmo(sp);
 
-		// if (seg.is_valid()) {
-			// sp->set_gizmo(seg);
-		// }
+		 if (seg.is_valid()) {
+			 sp->set_gizmo(seg);
+		 }
 
-		// for (List<EditorPlugin*>::Element *E=gizmo_plugins.front();E;E=E->next()) {
+		 for (List<EditorPlugin*>::Element *E=gizmo_plugins.front();E;E=E->next()) {
 
-			// if (E->get()->create_spatial_gizmo(sp)) {
+			 if (E->get()->create_spatial_gizmo(sp)) {
 
-				// seg = sp->get_gizmo();
-				// if (sp==selected && seg.is_valid()) {
+				 seg = sp->get_gizmo();
+				 if (sp==selected && seg.is_valid()) {
 
-					// seg->set_selected(true);
-					// selected->update_gizmo();
-				// }
-				// return;
-			// }
-		// }
+					 seg->set_selected(true);
+					 selected->update_gizmo();
+				 }
+				 return;
+			 }
+		 }
 
-		// if (seg.is_valid() && sp==selected) {
-			// seg->set_selected(true);
-			// selected->update_gizmo();
-		// }
+		 if (seg.is_valid() && sp==selected) {
+			 seg->set_selected(true);
+			 selected->update_gizmo();
+		 }
 
-	// }
+	 }
 
 }
 
@@ -4178,7 +4178,7 @@ SpatialEditor::~SpatialEditor() {
 void SpatialEditorPlugin::make_visible(bool p_visible) {
 
 	if (p_visible) {
-	
+
 
 		spatial_editor->show();
 		spatial_editor->set_process(true);
@@ -4186,7 +4186,7 @@ void SpatialEditorPlugin::make_visible(bool p_visible) {
 		spatial_editor->grab_focus();
 
 	} else {
-	
+
 		spatial_editor->hide();
 		spatial_editor->set_process(false);
 		//VisualServer::get_singleton()->viewport_set_hide_scenario(editor->get_scene_root()->get_viewport(),true);
@@ -4200,7 +4200,7 @@ void SpatialEditorPlugin::edit(Object *p_object) {
 }
 
 bool SpatialEditorPlugin::handles(Object *p_object) const {
-	
+
 	return p_object->is_type("Spatial");
 }
 
@@ -4234,7 +4234,7 @@ void SpatialEditorPlugin::snap_cursor_to_plane(const Plane& p_plane) {
 
 
 SpatialEditorPlugin::SpatialEditorPlugin(EditorNode *p_node) {
-	
+
 	editor=p_node;
 	spatial_editor = memnew( SpatialEditor(p_node) );
 	spatial_editor->set_v_size_flags(Control::SIZE_EXPAND_FILL);
@@ -4249,7 +4249,7 @@ SpatialEditorPlugin::SpatialEditorPlugin(EditorNode *p_node) {
 
 
 SpatialEditorPlugin::~SpatialEditorPlugin() {
-	
+
 }
 
 

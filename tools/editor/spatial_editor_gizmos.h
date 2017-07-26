@@ -43,7 +43,7 @@
 #include "scene/3d/visibility_notifier.h"
 #include "scene/3d/portal.h"
 //#include "scene/3d/ray_cast.h"
-//#include "scene/3d/navigation_mesh.h"
+#include "scene/3d/navigation_mesh.h"
 
 //#include "scene/3d/vehicle_body.h"
 //#include "scene/3d/collision_polygon.h"
@@ -351,29 +351,29 @@ public:
 // };
 
 
-// class NavigationMeshSpatialGizmo  : public SpatialGizmoTool {
+ class NavigationMeshSpatialGizmo  : public SpatialGizmoTool {
 
-	// OBJ_TYPE(NavigationMeshSpatialGizmo,SpatialGizmoTool);
-
-
-	// struct _EdgeKey {
-
-		// Vector3 from;
-		// Vector3 to;
-
-		// bool operator<(const _EdgeKey& p_with) const { return from==p_with.from ? to < p_with.to : from < p_with.from; }
-	// };
+	 OBJ_TYPE(NavigationMeshSpatialGizmo,SpatialGizmoTool);
 
 
+	 struct _EdgeKey {
 
-	// NavigationMeshInstance* navmesh;
+		 Vector3 from;
+		 Vector3 to;
 
-// public:
+		 bool operator<(const _EdgeKey& p_with) const { return from==p_with.from ? to < p_with.to : from < p_with.from; }
+	 };
 
-	// void redraw();
-	// NavigationMeshSpatialGizmo(NavigationMeshInstance* p_navmesh=NULL);
 
-// };
+
+	 NavigationMeshInstance* navmesh;
+
+ public:
+
+	 void redraw();
+	 NavigationMeshSpatialGizmo(NavigationMeshInstance* p_navmesh=NULL);
+
+ };
 
 
 // class PinJointSpatialGizmo  : public SpatialGizmoTool {

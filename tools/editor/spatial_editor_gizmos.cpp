@@ -1640,7 +1640,7 @@ Position3DSpatialGizmo::Position3DSpatialGizmo(Position3D* p_p3d) {
 void TestCubeSpatialGizmo::redraw() {
 
 	clear();
-	add_collision_triangles(SpatialEditorGizmos::singleton->test_cube_tm);
+	//add_collision_triangles(SpatialEditorGizmos::singleton->test_cube_tm);
 }
 
 TestCubeSpatialGizmo::TestCubeSpatialGizmo(TestCube* p_tc) {
@@ -2260,104 +2260,104 @@ VisibilityNotifierGizmo::VisibilityNotifierGizmo(VisibilityNotifier* p_notifier)
 
 
 
-// void NavigationMeshSpatialGizmo::redraw() {
+ void NavigationMeshSpatialGizmo::redraw() {
 
-	// clear();
-	// Ref<NavigationMesh> navmeshie = navmesh->get_navigation_mesh();
-	// if (navmeshie.is_null())
-		// return;
+	 clear();
+	 Ref<NavigationMesh> navmeshie = navmesh->get_navigation_mesh();
+	 if (navmeshie.is_null())
+		 return;
 
-	// DVector<Vector3> vertices = navmeshie->get_vertices();
-	// DVector<Vector3>::Read vr=vertices.read();
-	// List<Face3> faces;
-	// for(int i=0;i<navmeshie->get_polygon_count();i++) {
-		// Vector<int> p = navmeshie->get_polygon(i);
+	 DVector<Vector3> vertices = navmeshie->get_vertices();
+	 DVector<Vector3>::Read vr=vertices.read();
+	 List<Face3> faces;
+	 for(int i=0;i<navmeshie->get_polygon_count();i++) {
+		 Vector<int> p = navmeshie->get_polygon(i);
 
-		// for(int j=2;j<p.size();j++) {
-			// Face3 f;
-			// f.vertex[0]=vr[p[0]];
-			// f.vertex[1]=vr[p[j-1]];
-			// f.vertex[2]=vr[p[j]];
+		 for(int j=2;j<p.size();j++) {
+			 Face3 f;
+			 f.vertex[0]=vr[p[0]];
+			 f.vertex[1]=vr[p[j-1]];
+			 f.vertex[2]=vr[p[j]];
 
-			// faces.push_back(f);
-		// }
-	// }
+			 faces.push_back(f);
+		 }
+	 }
 
-	// if (faces.empty())
-		// return;
+	 if (faces.empty())
+		 return;
 
-	// Map<_EdgeKey,bool> edge_map;
-	// DVector<Vector3> tmeshfaces;
-	// tmeshfaces.resize(faces.size()*3);
+	 Map<_EdgeKey,bool> edge_map;
+	 DVector<Vector3> tmeshfaces;
+	 tmeshfaces.resize(faces.size()*3);
 
-	// {
-		// DVector<Vector3>::Write tw=tmeshfaces.write();
-		// int tidx=0;
+	 {
+		 DVector<Vector3>::Write tw=tmeshfaces.write();
+		 int tidx=0;
 
 
-		// for(List<Face3>::Element *E=faces.front();E;E=E->next()) {
+		 for(List<Face3>::Element *E=faces.front();E;E=E->next()) {
 
-			// const Face3 &f = E->get();
+			 const Face3 &f = E->get();
 
-			// for(int j=0;j<3;j++) {
+			 for(int j=0;j<3;j++) {
 
-				// tw[tidx++]=f.vertex[j];
-				// _EdgeKey ek;
-				// ek.from=f.vertex[j].snapped(CMP_EPSILON);
-				// ek.to=f.vertex[(j+1)%3].snapped(CMP_EPSILON);
-				// if (ek.from<ek.to)
-					// SWAP(ek.from,ek.to);
+				 tw[tidx++]=f.vertex[j];
+				 _EdgeKey ek;
+				 ek.from=f.vertex[j].snapped(CMP_EPSILON);
+				 ek.to=f.vertex[(j+1)%3].snapped(CMP_EPSILON);
+				 if (ek.from<ek.to)
+					 SWAP(ek.from,ek.to);
 
-				// Map<_EdgeKey,bool>::Element *E=edge_map.find(ek);
+				 Map<_EdgeKey,bool>::Element *E=edge_map.find(ek);
 
-				// if (E) {
+				 if (E) {
 
-					// E->get()=false;
+					 E->get()=false;
 
-				// } else {
+				 } else {
 
-					// edge_map[ek]=true;
-				// }
+					 edge_map[ek]=true;
+				 }
 
-			// }
-		// }
-	// }
-	// Vector<Vector3> lines;
+			 }
+		 }
+	 }
+	 Vector<Vector3> lines;
 
-	// for(Map<_EdgeKey,bool>::Element *E=edge_map.front();E;E=E->next()) {
+	 for(Map<_EdgeKey,bool>::Element *E=edge_map.front();E;E=E->next()) {
 
-		// if (E->get()) {
-			// lines.push_back(E->key().from);
-			// lines.push_back(E->key().to);
-		// }
-	// }
+		 if (E->get()) {
+			 lines.push_back(E->key().from);
+			 lines.push_back(E->key().to);
+		 }
+	 }
 
-	// Ref<TriangleMesh> tmesh = memnew( TriangleMesh );
-	// tmesh->create(tmeshfaces);
+	 Ref<TriangleMesh> tmesh = memnew( TriangleMesh );
+	 tmesh->create(tmeshfaces);
 
-	// if (lines.size())
-		// add_lines(lines,navmesh->is_enabled()?SpatialEditorGizmos::singleton->navmesh_edge_material:SpatialEditorGizmos::singleton->navmesh_edge_material_disabled);
-	// add_collision_triangles(tmesh);
-	// Ref<Mesh> m = memnew( Mesh );
-	// Array a;
-	// a.resize(Mesh::ARRAY_MAX);
-	// a[0]=tmeshfaces;
-	// m->add_surface(Mesh::PRIMITIVE_TRIANGLES,a);
-	// m->surface_set_material(0,navmesh->is_enabled()?SpatialEditorGizmos::singleton->navmesh_solid_material:SpatialEditorGizmos::singleton->navmesh_solid_material_disabled);
-	// add_mesh(m);
-	// add_collision_segments(lines);
+	 if (lines.size())
+		 add_lines(lines,navmesh->is_enabled()?SpatialEditorGizmos::singleton->navmesh_edge_material:SpatialEditorGizmos::singleton->navmesh_edge_material_disabled);
+	 add_collision_triangles(tmesh);
+	 Ref<Mesh> m = memnew( Mesh );
+	 Array a;
+	 a.resize(Mesh::ARRAY_MAX);
+	 a[0]=tmeshfaces;
+	 m->add_surface(Mesh::PRIMITIVE_TRIANGLES,a);
+	 m->surface_set_material(0,navmesh->is_enabled()?SpatialEditorGizmos::singleton->navmesh_solid_material:SpatialEditorGizmos::singleton->navmesh_solid_material_disabled);
+	 add_mesh(m);
+	 add_collision_segments(lines);
 
-// }
+ }
 
-// NavigationMeshSpatialGizmo::NavigationMeshSpatialGizmo(NavigationMeshInstance *p_navmesh){
+ NavigationMeshSpatialGizmo::NavigationMeshSpatialGizmo(NavigationMeshInstance *p_navmesh){
 
-	// set_spatial_node(p_navmesh);
-	// navmesh=p_navmesh;
-// }
+	 set_spatial_node(p_navmesh);
+	 navmesh=p_navmesh;
+ }
 
-// //////
-// ///
-// ///
+ //////
+ ///
+ ///
 
 
 

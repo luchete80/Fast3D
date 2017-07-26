@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/coreio_.dir/aes256.cpp.obj"
+  "CMakeFiles/coreio_.dir/compression.cpp.obj"
+  "CMakeFiles/coreio_.dir/config_file.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_buffered.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_compressed.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_encrypted.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_memory.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_network.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_pack.cpp.obj"
+  "CMakeFiles/coreio_.dir/file_access_zip.cpp.obj"
+  "CMakeFiles/coreio_.dir/http_client.cpp.obj"
+  "CMakeFiles/coreio_.dir/image_loader.cpp.obj"
+  "CMakeFiles/coreio_.dir/ip.cpp.obj"
+  "CMakeFiles/coreio_.dir/ip_address.cpp.obj"
+  "CMakeFiles/coreio_.dir/json.cpp.obj"
+  "CMakeFiles/coreio_.dir/marshalls.cpp.obj"
+  "CMakeFiles/coreio_.dir/md5.cpp.obj"
+  "CMakeFiles/coreio_.dir/packet_peer.cpp.obj"
+  "CMakeFiles/coreio_.dir/packet_peer_udp.cpp.obj"
+  "CMakeFiles/coreio_.dir/resource_format_binary.cpp.obj"
+  "CMakeFiles/coreio_.dir/resource_format_xml.cpp.obj"
+  "CMakeFiles/coreio_.dir/resource_loader.cpp.obj"
+  "CMakeFiles/coreio_.dir/resource_saver.cpp.obj"
+  "CMakeFiles/coreio_.dir/stream_peer.cpp.obj"
+  "CMakeFiles/coreio_.dir/stream_peer_ssl.cpp.obj"
+  "CMakeFiles/coreio_.dir/stream_peer_tcp.cpp.obj"
+  "CMakeFiles/coreio_.dir/tcp_server.cpp.obj"
+  "CMakeFiles/coreio_.dir/translation_loader_po.cpp.obj"
+  "CMakeFiles/coreio_.dir/xml_parser.cpp.obj"
+  "CMakeFiles/coreio_.dir/base64.c.obj"
+  "CMakeFiles/coreio_.dir/fastlz.c.obj"
+  "CMakeFiles/coreio_.dir/ioapi.c.obj"
+  "CMakeFiles/coreio_.dir/unzip.c.obj"
+  "CMakeFiles/coreio_.dir/zip.c.obj"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/coreio_.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
